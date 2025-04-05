@@ -17,7 +17,7 @@ Buat plugin baru dalam folder `plugins/` seperti ini:
 
 ```js
 export default {
-  name: "testing,
+  name: "testing",
   command: ["test", "testing"],
   run: async (m, {
     sock
