@@ -43,7 +43,7 @@ Pengaturan utama bot disimpan di file `config.js`:
     "online": false,
     "prefix": true,
     "blacklist": [],
-    "emoji": ["❤️", "💛", "💚", "💙", "💜"],
+    "emoji": ["❤️", "💛", "💚", "💙", "💜", "😊", "😉", "😀", "😂", "😋", "🤗"],
     "pairing": {
         "state": true,
         "number": 6285166592282
