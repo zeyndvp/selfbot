@@ -1,0 +1,23 @@
+{
+  "name": "selfbot",
+  "version": "1.0.0",
+  "description": "selfbot",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "selfbot"
+  ],
+  "author": "Maulana Muhammad",
+  "license": "MIT",
+  "dependencies": {
+    "baileys": "npm:@neoxr/baileys@latest",
+    "cfonts": "^3.3.0",
+    "chalk": "^5.4.1",
+    "chokidar": "^4.0.3",
+    "express": "^5.1.0",
+    "node-cache": "^5.1.2"
+  }
+}

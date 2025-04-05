@@ -1,0 +1,18 @@
+{
+    "nameown": "just zeyn",
+    "ownernumber": "6285166592282",
+    "anticall": false,
+    "self": true,
+    "readsw": true,
+    "reactsw": false,
+    "readchat": true,
+    "autotyping": false,
+    "online": false,
+    "prefix": true,
+    "blacklist": [],
+    "emoji": ["❤️", "💛", "💚", "💙", "💜"],
+    "pairing": {
+        "state": true,
+        "number": 6285166592282
+    }
+}
