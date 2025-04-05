@@ -1,6 +1,6 @@
 # WhatsApp Bot - Multi-featured Baileys Bot
 
-Bot WhatsApp ini dibangun menggunakan [Baileys](https://github.com/@whiskeysockets/baileys), pustaka powerful untuk berinteraksi dengan WhatsApp Web API. Bot ini dirancang dengan struktur modular, memungkinkan penambahan plugin baru dengan sangat mudah dan fleksibel.
+Bot WhatsApp ini dibangun menggunakan [Baileys](https://github.com/whiskeysockets/baileys), pustaka powerful untuk berinteraksi dengan WhatsApp Web API. Bot ini dirancang dengan struktur modular, memungkinkan penambahan plugin baru dengan sangat mudah dan fleksibel.
 
 ## ✨ Fitur Utama
 - **Sistem Plugin Modular**: Tambahkan fitur hanya dengan membuat file baru di folder `plugins/`.
