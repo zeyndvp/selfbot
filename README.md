@@ -1,6 +1,6 @@
 # WhatsApp Bot - Multi-featured Baileys Bot
 
-Bot WhatsApp ini dibangun menggunakan [Baileys](https://github.com/adiwajshing/Baileys), pustaka powerful untuk berinteraksi dengan WhatsApp Web API. Bot ini dirancang dengan struktur modular, memungkinkan penambahan plugin baru dengan sangat mudah dan fleksibel.
+Bot WhatsApp ini dibangun menggunakan [Baileys](https://github.com/@whiskeysockets/baileys), pustaka powerful untuk berinteraksi dengan WhatsApp Web API. Bot ini dirancang dengan struktur modular, memungkinkan penambahan plugin baru dengan sangat mudah dan fleksibel.
 
 ## ✨ Fitur Utama
 - **Sistem Plugin Modular**: Tambahkan fitur hanya dengan membuat file baru di folder `plugins/`.
@@ -17,24 +17,38 @@ Buat plugin baru dalam folder `plugins/` seperti ini:
 
 ```js
 export default {
-  name: "Testing",
+  name: "testing,
   command: ["test", "testing"],
-  models: "%prefix%command",
-  run: async (m, { sock }) => {
+  run: async (m, {
+    sock
+  }) => {
     await m.reply(`Halo ${m.pushName}, ini fitur test!`);
   }
 }
 ```
 
 ## ⚙️ Konfigurasi
-Pengaturan utama bot disimpan di file `setting.js`:
+Pengaturan utama bot disimpan di file `config.js`:
 
 ```js
-export default {
-  owner: ["628xxx"],
-  botName: "WhatsApp Bot",
-  prefix: [".", "/", "!"]
-};
+{
+    "nameown": "just zeyn",
+    "ownernumber": "628516659228",
+    "anticall": false,
+    "self": true,
+    "readsw": true,
+    "reactsw": false,
+    "readchat": true,
+    "autotyping": false,
+    "online": false,
+    "prefix": true,
+    "blacklist": [],
+    "emoji": ["❤️", "💛", "💚", "💙", "💜"],
+    "pairing": {
+        "state": true,
+        "number": 6285166592282
+    }
+}
 ```
 
 ## 💬 Daftar Command Utama
@@ -49,8 +63,8 @@ export default {
 ## 🚀 Cara Menjalankan
 1. Clone repositori ini:
    ```bash
-   git clone https://github.com/username/repo-name
-   cd repo-name
+   git clone https://github.com/zeyndvp/selfbot
+   cd selfbot
    ```
 2. Install dependency:
    ```bash
@@ -60,21 +74,6 @@ export default {
    ```bash
    node index.js
    ```
-
-## 📁 Struktur Direktori
-```
-├── lib/            # Fungsi bantuan
-├── plugins/        # Folder tempat plugin dibuat
-├── store/          # Data cache & story
-├── setting.js      # Pengaturan utama bot
-├── handler.js      # Message handler utama
-├── connection.js   # Koneksi ke WhatsApp
-```
-
-## 📸 Contoh Log
-```
-[ CMD ] 06/04/25 14:21:30  conversation  from [6281234567890]  Aldi  in [120363123456789@g.us]  WhatsApp Bot
-```
 
 ## 👑 Thanks To
 - **Lutfi Joestars** – Referensi dan pemilik dasar code awal
