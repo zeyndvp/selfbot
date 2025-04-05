@@ -20,7 +20,7 @@ export default {
   name: "testing",
   command: ["test", "testing"],
   run: async (m, {
-    sock
+    cient
   }) => {
     await m.reply(`Halo ${m.pushName}, ini fitur test!`);
   }
