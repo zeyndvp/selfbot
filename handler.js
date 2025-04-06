@@ -19,15 +19,15 @@ export async function handler(client, m, plugins, store) {
     const args = m.body.trim().split(/\s+/).slice(1)
     const text = args.join(" ")
 
-    if (global.env.autotyping) client.sendPresenceUpdate('composing', m.from)
-    if (!global.env.online) client.sendPresenceUpdate('unavailable', m.from)
-    if (global.env.online) client.sendPresenceUpdate('available', m.from)
+    if (global.env.autotyping) client.sendPresenceUpdate('composing', m.chat)
+    if (!global.env.online) client.sendPresenceUpdate('unavailable', m.chat)
+    if (global.env.online) client.sendPresenceUpdate('available', m.chat)
     if (global.env.readchat) client.readMessages([m.key])
 
     client.storyJid = client.storyJid || []
     client.story = client.story || []
     
-    if (m.from.endsWith('broadcast') && !client.storyJid.includes(m.sender) && m.sender !== client.decodeJid(client.user.id)) {
+    if (m.chat.endsWith('broadcast') && !client.storyJid.includes(m.sender) && m.sender !== client.decodeJid(client.user.id)) {
         client.storyJid.push(m.sender)
     }
 
@@ -37,11 +37,11 @@ export async function handler(client, m, plugins, store) {
     }
     
     if (!(global.env.blacklist && global.env.blacklist.includes(m.sender.split('@')[0]))) {
-        if (global.env.readsw && m.from.endsWith('broadcast') && !/protocol/.test(m.type)) {
+        if (global.env.readsw && m.chat.endsWith('broadcast') && !/protocol/.test(m.type)) {
             await client.readMessages([m.key])
         }
     
-        if (global.env.reactsw && m.from.endsWith('broadcast') && [...new Set(client.storyJid)].includes(m.sender) && !/protocol/.test(m.type)) {
+        if (global.env.reactsw && m.chat.endsWith('broadcast') && [...new Set(client.storyJid)].includes(m.sender) && !/protocol/.test(m.type)) {
             await client.sendMessage('status@broadcast', {
                 react: {
                     text: getRandomEmoji(),
@@ -53,7 +53,7 @@ export async function handler(client, m, plugins, store) {
         }
     }    
 
-    if (m.from.endsWith('broadcast') && !/protocol/.test(m.type)) {
+    if (m.chat.endsWith('broadcast') && !/protocol/.test(m.type)) {
         client.story.push({
             jid: m.key.participant,
             msg: m,
@@ -61,11 +61,11 @@ export async function handler(client, m, plugins, store) {
         })
     }    
 
-    if (!m.from.endsWith('newsletter') && !/protocol/.test(m.type)) {
+    if (!m.chat.endsWith('newsletter') && !/protocol/.test(m.type)) {
         console.log(
             chalk.cyanBright(`\n┏━━━━━━━━━━━━━━━━━━[ MESSAGE LOG ]━━━━━━━━━━━━━━━━━━┓`) +
             `\n${chalk.cyanBright('┃')} ${chalk.bold.cyan('From     :')} ${chalk.white(m.pushName)} ${chalk.gray('<')} ${chalk.yellow(m.sender)} ${chalk.gray('>')}` +
-            `\n${chalk.cyanBright('┃')} ${chalk.bold.cyan('Chat     :')} ${chalk.white(m.isGroup ? m.from : 'Private Chat')}` +
+            `\n${chalk.cyanBright('┃')} ${chalk.bold.cyan('Chat     :')} ${chalk.white(m.isGroup ? m.chat : 'Private Chat')}` +
             `\n${chalk.cyanBright('┃')} ${chalk.bold.cyan('Type     :')} ${chalk.cyanBright(m.type)}${m.isMedia ? chalk.gray(' (media)') : ''}` +
             `\n${chalk.cyanBright('┃')} ${chalk.bold.cyan('Command  :')} ${chalk.greenBright(m.body || 'No Body')}` +
             `\n${chalk.cyanBright('┃')} ${chalk.bold.cyan('Time     :')} ${chalk.redBright(new Date().toLocaleString())}` +
@@ -84,7 +84,7 @@ export async function handler(client, m, plugins, store) {
                 m.reply('This feature only for owner!')
                continue
             }
-            if (cmd.wait) await client.sendMessage(m.from, { react: { text: '🕒', key: m.key }})
+            if (cmd.wait) await client.sendMessage(m.chat, { react: { text: '🕒', key: m.key }})
     
             cmd.run(m, {
                 client,
