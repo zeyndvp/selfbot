@@ -93,7 +93,7 @@ export async function handler(client, m, plugins, store) {
                 command,
                 env,
                 store,
-                text,
+                text
             })
         }
     }    
