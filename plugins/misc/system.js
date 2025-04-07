@@ -1,5 +1,3 @@
-import { text } from "express"
-
 export default {
     name: ['anticall', 'prefix', 'readsw', 'reactsw', 'readchat', 'autotyping', 'self', 'online'],
     command: ['anticall', 'prefix', 'readsw', 'reactsw', 'readchat', 'autotyping', 'self', 'online'],
@@ -7,7 +5,8 @@ export default {
     run: async(m, {
         client,
         env,
-        command
+        command,
+        text
     }) => {
         let state = Object.keys(env).filter(key => typeof env[key] === 'boolean')
         if (!text) {
